@@ -14,7 +14,8 @@
   @include vendor("justify-content", "center");
   @include vendor("flex-direction", "column");
   position: relative;
-  max-width: 80%;
+  max-width: 70%;
+  min-width: 50%;
   z-index: 3;
   display: none;
 
