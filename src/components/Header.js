@@ -12,8 +12,9 @@ const Header = props => (
         <p>
           Lambda Chi Chapter
           <br />
-          Virginia Commonwealth University
-        </p>
+          </p>
+          <p>Virginia Commonwealth University</p>
+        
       </div>
     </div>
     <nav>

@@ -69,7 +69,7 @@ class Main extends React.Component {
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">The Fireman's Challenge 2021</h2>
+          <h2 className="major">Fireman's Challenge</h2>
           <span className="image main">
             <img src={pic02} alt="" />
           </span>
@@ -98,15 +98,15 @@ class Main extends React.Component {
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Meet the Executive Board</h2>
+          <h2 className="major">Executive Board</h2>
           <span className="image main">
-            <img src={pic05} alt="" height="200"/>
+            <img src={pic05} alt="" height="100"/>
           </span>
           <span className="image main">
-            <img src={pic06} alt="" height="200"/>
+            <img src={pic06} alt="" height="100"/>
           </span>
           <span className="image main">
-            <img src={pic07} alt="" width="100" height="400"/>
+            <img src={pic07} alt="" width="100" height="200"/>
           </span>
           
   
