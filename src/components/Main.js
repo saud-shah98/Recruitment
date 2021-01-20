@@ -9,26 +9,61 @@ import pic07 from '../assets/images/pic07.png'
 import card from '../assets/images/card.jpg'
 
 class Main extends React.Component {
+  constructor(props){
+    super(props);
+
+  
+  this.state= {
+  name:"",
+    year: "",
+    major: "",
+    phone: "",
+    on_campus: "",
+  };
+}
+onNameChange(event) {
+  this.setState({name: event.target.value})
+}
+
+onPhoneChange(event) {
+  this.setState({phone: event.target.value})
+}
+
+onMajorChange(event) {
+  this.setState({major: event.target.value})
+}
+onYearChange(event) {
+  this.setState({year: event.target.value})
+}
+
+handleSubmit(event) {
+}
+
   render() {
     let close = (
       <div
         className="close"
         onClick={() => {
-          this.props.onCloseArticle()
+          onCloseArticle()
         }}
       ></div>
     )
 
+  
+    const {setWrapperRef,timeout,article,articleTimeout,onCloseArticle} = this.props;
+    
+
     return (
+      
       <div
-        ref={this.props.setWrapperRef}
+        ref={setWrapperRef}
         id="main"
-        style={this.props.timeout ? { display: 'flex' } : { display: 'none' }}
+        style={timeout ? { display: 'flex' } : { display: 'none' }}
       >
         <article
           id="intro"
-          className={`${this.props.article === 'intro' ? 'active' : ''} ${
-            this.props.articleTimeout ? 'timeout' : ''
+          className={`${article === 'intro' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
           style={{ display: 'none' }}
         >
@@ -47,29 +82,19 @@ class Main extends React.Component {
             By the way, check out my <a href="#work">awesome work</a>.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Etiam tristique
-            libero eu nibh porttitor fermentum. Nullam venenatis erat id
-            vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
-            Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae
-            dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in
-            lectus. Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas. In non lorem sit amet elit
-            placerat maximus. Pellentesque aliquam maximus risus, vel sed
-            vehicula.
+           
           </p>
           {close}
         </article>
 
         <article
           id="work"
-          className={`${this.props.article === 'work' ? 'active' : ''} ${
-            this.props.articleTimeout ? 'timeout' : ''
+          className={`${article === 'work' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Fireman's Challenge</h2>
+          <h2 className="major">Donate towards FC</h2>
           <span className="image main">
             <img src={pic02} alt="" />
           </span>
@@ -93,8 +118,8 @@ class Main extends React.Component {
 
         <article
           id="about"
-          className={`${this.props.article === 'about' ? 'active' : ''} ${
-            this.props.articleTimeout ? 'timeout' : ''
+          className={`${article === 'about' ? 'active' : ''} ${
+            articleTimeout ? 'timeout' : ''
           }`}
           style={{ display: 'none' }}
         >
@@ -115,28 +140,32 @@ class Main extends React.Component {
 
         <article
           id="contact"
-          className={`${this.props.article === 'contact' ? 'active' : ''} ${
-            this.props.articleTimeout ? 'timeout' : ''
+          className={`${article === 'contact' ? 'active' : ''} ${
+           articleTimeout ? 'timeout' : ''
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Contact</h2>
-          <form method="post" action="#">
+          <h2 className="major">Connect with us</h2>
+          <form method="POST" onSubmit={this.handleSubmit.bind(this)}  >
             <div className="field half first">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
+              <label htmlFor="name">Full Name</label>
+              <input type="text" name="name"  required id="name" onChange={this.onNameChange.bind(this)} value={this.state.name} />
             </div>
             <div className="field half">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <label htmlFor="phone">Phone Number</label>
+              <input type="text" name="phone" id="phone" onChange={this.onPhoneChange.bind(this)} required value={this.state.phone} />
             </div>
             <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <label htmlFor="year">School Year</label>
+              <input  type="text" name="year" id="year" onChange={this.onYearChange.bind(this)} required value={this.state.year} ></input>
+            </div>
+            <div className="field">
+              <label htmlFor="major">Major</label>
+              <textarea name="major" id="major" onChange={this.onMajorChange.bind(this)} required value={this.state.major} rows="0"></textarea>
             </div>
             <ul className="actions">
               <li>
-                <input type="submit" value="Send Message" className="special" />
+                <input type="submit" value="Submit Contact Form" className="special" />
               </li>
               <li>
                 <input type="reset" value="Reset" />
