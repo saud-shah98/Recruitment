@@ -20,6 +20,9 @@ class Main extends React.Component {
     phone: "",
     on_campus: "",
   };
+
+  this.handleSubmit = this.handleSubmit.bind(this);
+
 }
 onNameChange(event) {
   this.setState({name: event.target.value})
@@ -37,6 +40,8 @@ onYearChange(event) {
 }
 
 handleSubmit(event) {
+  event.preventDefault();
+  console.log(this.state)
 }
 
   render() {
@@ -146,7 +151,7 @@ handleSubmit(event) {
           style={{ display: 'none' }}
         >
           <h2 className="major">Connect with us</h2>
-          <form method="POST" onSubmit={this.handleSubmit.bind(this)}  >
+          <form method="POST" onSubmit={this.handleSubmit}  >
             <div className="field half first">
               <label htmlFor="name">Full Name</label>
               <input type="text" name="name"  required id="name" onChange={this.onNameChange.bind(this)} value={this.state.name} />
